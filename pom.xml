@@ -25,14 +25,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--     Jakarta JPA -->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-
-
         <!--         JSP Template Inheritance -->
         <dependency>
             <groupId>com.waka.template</groupId>
@@ -40,12 +32,12 @@
             <version>1.0</version>
         </dependency>
 
-        <!--    hibernate-->
+<!--        Hibernate Core with entityManager-->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core-jakarta -->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>6.0.0.Alpha7</version>
-            <type>pom</type>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.6.15.Final</version>
         </dependency>
 
         <!-- MySQL Connector -->

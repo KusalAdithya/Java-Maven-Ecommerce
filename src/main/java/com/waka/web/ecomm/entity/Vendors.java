@@ -27,7 +27,7 @@ public class Vendors implements Serializable {
     @Column(name = "status")
     private Status status;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "users_id")
     private Users user;
 

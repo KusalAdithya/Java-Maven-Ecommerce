@@ -12,11 +12,8 @@ public class RequestFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("Request Filter ------------");
-
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String path = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
-        System.out.println("Path -----------: " + path);
 
         if (Routing.hasRoute(httpServletRequest.getMethod(), path)) {
             httpServletRequest.getRequestDispatcher("/app" + path).forward(request, response); // Forward the request to the core servlet

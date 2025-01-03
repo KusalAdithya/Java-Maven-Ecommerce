@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Controller {
 
     public static void view(String file, HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/frontend/" + file + ".jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/frontend/" + file + ".jsp"); // Set the path to the view with hidden folder for client
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

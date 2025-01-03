@@ -8,30 +8,41 @@ import jakarta.persistence.TypedQuery;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+
 public class AccountController extends Controller {
     public void index(HttpServletRequest request, HttpServletResponse response) {
         view("login", request, response);
     }
 
-
     public void login(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+
+
 
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         TypedQuery<Users> query = entityManager.createNamedQuery("Users.checkLogin", Users.class)
                 .setParameter("email", email)
                 .setParameter("password", password);
 
+        try {
+            Users user = query.getSingleResult();
 
-        Users user = query.getSingleResult();
-        System.out.println(user);
-        if (user != null) {
-            request.getSession().setAttribute("user", user);
-            redirect("index", response);
-        } else {
-            request.setAttribute("error", "Invalid email or password");
-            view("account", request, response);
+            if (user != null) {
+                request.getSession().setAttribute("user", user);
+            redirect("", response); // Redirect to home page
+            } else {
+                redirect("account", response);
+            }
+        }catch (Exception e){
+            redirect("account", response);
         }
+
+    }
+
+    public void logout (HttpServletRequest request, HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        redirect("", response);
     }
 }

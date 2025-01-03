@@ -5,13 +5,33 @@
              version="2.2">
     <persistence-unit name="JPA-PU">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-<exclude-unlisted-classes>false</exclude-unlisted-classes>
-                <properties>
-                    <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ecom_db?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
-                    <property name="jakarta.persistence.jdbc.user" value="root"/>
-                    <property name="jakarta.persistence.jdbc.password" value="Kusal_Adi/196572"/>
-                    <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-                    <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
-                </properties>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ecom_db?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="Kusal_Adi/196572"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+        </properties>
     </persistence-unit>
 </persistence>
+
+<!--<persistence xmlns="https://jakarta.ee/xml/ns/persistence"-->
+<!--             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"-->
+<!--             version="3.0">-->
+<!--    <persistence-unit name="JPA-PU">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
+<!--        <properties>-->
+<!--            &lt;!&ndash; Database Connection Settings &ndash;&gt;-->
+<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ecom_db?useSSL=false&amp;allowPublicKeyRetrieval=true"/>-->
+<!--            <property name="jakarta.persistence.jdbc.user" value="root"/>-->
+<!--            <property name="jakarta.persistence.jdbc.password" value="Kusal_Adi/196572"/>-->
+<!--            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+
+<!--            &lt;!&ndash; Schema Generation &ndash;&gt;-->
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>-->
+<!--        </properties>-->
+<!--    </persistence-unit>-->
+<!--</persistence>-->

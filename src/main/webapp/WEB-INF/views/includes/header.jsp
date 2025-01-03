@@ -73,10 +73,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <c:if test="${sessionScope.user == null}">
-                                        <a class="dropdown-item" href="account"> login</a>
+                                        <a class="dropdown-item" href="account"> Login/Signup</a>
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
-                                        <a class="dropdown-item" href="tracking.html">tracking</a>
+                                        <a class="dropdown-item" href="logout_action">Logout</a>
                                     </c:if>
 
                                 </div>
@@ -87,19 +87,22 @@
 
                     <div class="hearer_icon d-flex">
                         <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <a href=""><i class="ti-heart"></i></a>
-                        <div class="dropdown cart">
-                            <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-cart-plus"></i>
-                            </a>
-                            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <div class="single_product">
+                        <c:if test="${sessionScope.user != null}">
+                            <a href=""><i class="ti-heart"></i></a>
 
-                                </div>
-                            </div> -->
+                            <div class="dropdown cart">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-cart-plus"></i>
+                                </a>
+                                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="single_product">
 
-                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </c:if>
+
                     </div>
                 </nav>
             </div>
