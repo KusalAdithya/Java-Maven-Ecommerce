@@ -41,7 +41,7 @@
                                 <h2>Have been here before?</h2>
                                 <p>There are advances being made in science and technology
                                     everyday, and a good example of this is the</p>
-                                <a href="#" class="btn_3">Log in</a>
+                                <a href="account" class="btn_3">Log in</a>
                             </div>
                         </div>
                     </div>
@@ -50,25 +50,28 @@
                             <div class="login_part_form_iner">
                                 <h3>New Here ?<br>
                                     Please Sign up now</h3>
-                                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+
+                                <form class="row contact_form" action="signup_action" method="post" novalidate="novalidate">
                                     <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control" id="email" name="name"
+                                        <input type="text" class="form-control" id="username" name="username" required
+                                               placeholder="Username">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="email" class="form-control" id="email" name="email" required
                                                placeholder="Email">
                                     </div>
                                     <div class="col-md-12 form-group p_star">
                                         <input type="password" class="form-control" id="password" name="password"
+                                               required
                                                placeholder="New Password">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
-                                        <input type="password" class="form-control" id="cpassword" name="cpassword"
-                                               placeholder="Confirm Password">
-                                    </div>
                                     <div class="col-md-12 form-group">
-                                        <button class="btn_3">
-                                            log in
+                                        <button class="btn_3" type="submit">
+                                            Sign up
                                         </button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>

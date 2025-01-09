@@ -10,9 +10,18 @@ public class Web implements BaseRouter {
     public void registerRouter() {
         // Register your routes here
         RouterMap.get("/", new HomeController(), "index");
+
         RouterMap.get("/profile", new HomeController(), "profile");
+
         RouterMap.get("/account", new AccountController(), "index");
         RouterMap.post("/login_action", new AccountController(), "login");
+
+        RouterMap.get("/signup", new AccountController(), "signup");
+        RouterMap.post("/signup_action", new AccountController(), "register");
+
         RouterMap.get("/logout_action", new AccountController(), "logout");
+
+        RouterMap.get("/verify", new AccountController(), "verifyEmail");
+
     }
 }

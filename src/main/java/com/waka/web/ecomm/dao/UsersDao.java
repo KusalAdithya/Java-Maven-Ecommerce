@@ -14,8 +14,8 @@ public class UsersDao {
 
     private final EntityManager entityManager;
 
-    public UsersDao(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public UsersDao() {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
     }
 
     public Users getUserById(Long id) {

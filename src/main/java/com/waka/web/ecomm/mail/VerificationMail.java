@@ -1,5 +1,6 @@
 package com.waka.web.ecomm.mail;
 
+import com.waka.web.ecomm.util.Env;
 import io.rocketbase.mail.model.HtmlTextEmail;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -19,28 +20,18 @@ public class VerificationMail extends Mailable{
         message.setRecipient(Message.RecipientType.TO,new InternetAddress(to));
         message.setSubject("Please Verify Your Email Address");
 
+        String url = Env.getProperty( "app.base_url")+"verify?token="+verificationCode;
+
         HtmlTextEmail content = getEmailTemplateBuilder()
                 .header()
-                .logo("https://www.rocketbase.io/img/logo-dark.png").logoHeight(41)
-                .and()
-                .text("Welcome, {{name}}!").h1().center().and()
-                .text("Thanks for trying [Product Name]. We’re thrilled to have you on board. To get the most out of [Product Name], do this primary next step:").and()
-                .button("Do this Next", "http://localhost").blue().and()
-                .text("For reference, here's your login information:").and()
-                .attribute()
-                .keyValue("Login Page", "{{login_url}}")
-                .keyValue("Username", "{{username}}")
-                .and()
-                .html("If you have any questions, feel free to <a href=\"mailto:{{support_email}}\">email our customer success team</a>. (We're lightning quick at replying.) We also offer <a href=\"{{live_chat_url}}\">live chat</a> during business hours.",
-                        "If you have any questions, feel free to email our customer success team\n" +
-                                "(We're lightning quick at replying.) We also offer live chat during business hours.").and()
-                .text("Cheers,\n" +
-                        "The [Product Name] Team").and()
-                .copyright("rocketbase").url("https://www.rocketbase.io").suffix(". All rights reserved.").and()
-                .footerText("[Company Name, LLC]\n" +
+                .logo("../webapp/img/logo.png").logoHeight(41).and()
+                .text("Welcome!").h1().center().and()
+                .text("Verify Your Email Address").h2().center().and()
+                .html("<center><a href=\""+url+"\">To Verify, Click Here</a></center>").and()
+                .copyright("Aranoz").url("http://localhost:8080/ecomm/").suffix(". All rights reserved.").and()
+                .footerText("[Aranoz.]\n" +
                         "1234 Street Rd.\n" +
                         "Suite 1234").and()
-                .footerImage("https://cdn.rocketbase.io/assets/loading/no-image.jpg").width(100).linkUrl("https://www.rocketbase.io").and()
                 .build();
 
         message.setContent(content.getHtml(),"text/html");

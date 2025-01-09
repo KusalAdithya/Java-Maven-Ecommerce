@@ -24,7 +24,7 @@ public class Users implements Serializable {
     private int id;
 
     @Basic
-    private String email, password;
+    private String email, password,username;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -36,11 +36,18 @@ public class Users implements Serializable {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Vendors> vendor =  new ArrayList<>();
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "email_verified_at")
+    private Date emailVerifiedAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  private Vendors vendors;
 
     @OneToMany(mappedBy = "user")
     private List<Orders> orders = new ArrayList<>();
+
 
     public int getId() {
         return id;
@@ -66,6 +73,13 @@ public class Users implements Serializable {
         this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Date getCreatedAt() {
         return createdAt;
@@ -91,12 +105,28 @@ public class Users implements Serializable {
         this.status = status;
     }
 
-    public List<Vendors> getVendor() {
-        return vendor;
+    public String getVerificationCode() {
+        return verificationCode;
     }
 
-    public void setVendor(List<Vendors> vendor) {
-        this.vendor = vendor;
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public Date getEmailVerifiedAt() {
+        return emailVerifiedAt;
+    }
+
+    public void setEmailVerifiedAt(Date emailVerifiedAt) {
+        this.emailVerifiedAt = emailVerifiedAt;
+    }
+
+    public Vendors getVendors() {
+        return vendors;
+    }
+
+    public void setVendors(Vendors vendors) {
+        this.vendors = vendors;
     }
 
     public List<Orders> getOrders() {

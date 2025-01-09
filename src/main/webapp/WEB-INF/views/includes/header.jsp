@@ -73,10 +73,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <c:if test="${sessionScope.user == null}">
-                                        <a class="dropdown-item" href="account"> Login/Signup</a>
+                                        <a class="dropdown-item" href="account">Login/Signup</a>
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
-                                        <a class="dropdown-item" href="profile">Profile</a>
+                                        <a class="dropdown-item" href="dashboard">Dashboard</a>
                                         <a class="dropdown-item" href="logout_action">Logout</a>
                                     </c:if>
 
