@@ -1,7 +1,11 @@
 package com.waka.web.ecomm.controller;
 
+import com.google.protobuf.EnumValue;
 import com.waka.web.ecomm.entity.SiteSetting;
 import com.waka.web.ecomm.entity.Users;
+import com.waka.web.ecomm.mail.VerificationMail;
+import com.waka.web.ecomm.provider.MailServiceProvider;
+import com.waka.web.ecomm.util.Env;
 import com.waka.web.ecomm.util.JPAUtil;
 import com.waka.web.mvc.core.controller.Controller;
 import com.waka.web.mvc.core.interfaces.Authenticate;
@@ -20,8 +24,8 @@ public class HomeController extends Controller {
         TypedQuery<SiteSetting> query = entityManager.createQuery("SELECT s FROM SiteSetting s WHERE s.name=: name", SiteSetting.class);
         query.setParameter("name", "app_name");
         SiteSetting appName = query.getSingleResult();
-        request.setAttribute("appName", appName.getValue());
 
+        request.setAttribute("appName", appName.getValue());
 
         view("index", request, response);
     }
