@@ -1,6 +1,7 @@
 package com.waka.web.ecomm.route;
 
 import com.waka.web.ecomm.controller.AccountController;
+import com.waka.web.ecomm.controller.DashboardController;
 import com.waka.web.ecomm.controller.HomeController;
 import com.waka.web.mvc.core.interfaces.BaseRouter;
 import com.waka.web.mvc.core.route.RouterMap;
@@ -22,6 +23,8 @@ public class Web implements BaseRouter {
         RouterMap.get("/logout_action", new AccountController(), "logout");
 
         RouterMap.get("/verify", new AccountController(), "verifyEmail");
+
+        RouterMap.get("/dashboard", new DashboardController(), "index");
 
     }
 }

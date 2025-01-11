@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class DashboardController extends Controller {
 
     public void index(HttpServletRequest request, HttpServletResponse response) {
-        view("dashboard", request, response);
+        view("DashBoard/dashboard", request, response);
 
     }
 }
