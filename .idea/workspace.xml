@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a447a40-f864-47f7-93fe-e030c2bc5ccd" name="Changes" comment="bashboard template adding">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/frontend/errorPages/verify_account.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/frontend/errorPages/verify_email.jsp" afterDir="false" />
+    <list default="true" id="5a447a40-f864-47f7-93fe-e030c2bc5ccd" name="Changes" comment="Improve authentication process with email verification and account activation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/util/Encryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/dao/UsersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/route/Web.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/ecomm/route/Web.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waka/web/mvc/core/route/Routing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waka/web/mvc/core/route/Routing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layouts/dashboardBase.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layouts/dashboardBase.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +23,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Jspx File" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -236,7 +230,7 @@
       <workItem from="1736852425607" duration="743000" />
       <workItem from="1736968098354" duration="8000" />
       <workItem from="1737020212918" duration="8763000" />
-      <workItem from="1737113895512" duration="14322000" />
+      <workItem from="1737113895512" duration="17405000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -286,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736597334719</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Improve authentication process with email verification and account activation">
+      <option name="closed" value="true" />
+      <created>1737201109609</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737201109609</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +300,7 @@
     <MESSAGE value="Add mailing system and update project to Java 17&#10;&#10;Introduced an email service with support for SMTP using Jakarta Mail API and an email template builder. Added a `MailServiceProvider`, `Mailable` base class, and `VerificationMail` for email workflows. Updated project dependencies and configurations for Java 17 compatibility." />
     <MESSAGE value="Add user signup, email verification, and dashboard features&#10;&#10;Implemented user signup flow with email verification using a unique token sent via email. Introduced a dashboard for authenticated users and improved navigation links in the login and signup pages. Updated entity relationships, added new DAO methods, and improved logging for better debugging." />
     <MESSAGE value="bashboard template adding" />
-    <option name="LAST_COMMIT_MESSAGE" value="bashboard template adding" />
+    <MESSAGE value="Improve authentication process with email verification and account activation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve authentication process with email verification and account activation" />
   </component>
 </project>

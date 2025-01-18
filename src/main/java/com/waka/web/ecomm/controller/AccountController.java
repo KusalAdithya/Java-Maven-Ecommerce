@@ -6,13 +6,13 @@ import com.waka.web.ecomm.entity.SiteSetting;
 import com.waka.web.ecomm.entity.Users;
 import com.waka.web.ecomm.mail.VerificationMail;
 import com.waka.web.ecomm.provider.MailServiceProvider;
+import com.waka.web.ecomm.util.Encryption;
 import com.waka.web.ecomm.util.JPAUtil;
 import com.waka.web.ecomm.util.Role;
 import com.waka.web.ecomm.util.Status;
 import com.waka.web.mvc.core.controller.Controller;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -41,7 +41,7 @@ public class AccountController extends Controller {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         TypedQuery<Users> query = entityManager.createNamedQuery("Users.checkLogin", Users.class)
                 .setParameter("email", email)
-                .setParameter("password", password);
+                .setParameter("password", Encryption.encrypt(password));
 
         try {
             Users user = query.getSingleResult();
@@ -83,7 +83,7 @@ public class AccountController extends Controller {
                 Users user = new Users();
                 user.setUsername(username);
                 user.setEmail(email);
-                user.setPassword(password);
+                user.setPassword(Encryption.encrypt(password));
                 user.setRole(Role.customer);
                 user.setStatus(Status.inactive);
                 //verification code generate
