@@ -24,6 +24,9 @@ public class Web implements BaseRouter {
 
         RouterMap.get("/verify", new AccountController(), "verifyEmail");
 
+        RouterMap.get("/verify_email", new AccountController(), "verifyError");
+        RouterMap.get("/verify_account", new AccountController(), "verifyAccount");
+
         RouterMap.get("/dashboard", new DashboardController(), "index");
 
     }

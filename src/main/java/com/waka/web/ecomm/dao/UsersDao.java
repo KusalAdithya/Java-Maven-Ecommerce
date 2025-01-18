@@ -2,8 +2,10 @@ package com.waka.web.ecomm.dao;
 
 import com.waka.web.ecomm.entity.Users;
 import com.waka.web.ecomm.util.JPAUtil;
+import com.waka.web.ecomm.util.Status;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.Date;
@@ -56,6 +58,26 @@ public class UsersDao {
 
     public boolean emailExists(String email) {
         return getUserByEmail(email).isPresent();
+    }
+
+    public boolean checkEmailVerified(String email){
+        try {
+            // Check if email is verified
+            Optional<Users> user = getUserByEmail(email);
+            return user.filter(u->u.getEmailVerifiedAt() != null).isPresent();
+        }catch (NoResultException e) {
+           return false;
+        }
+    }
+
+    public boolean checkUserStatus(String email){
+        try {
+            // Check if user is active
+            Optional<Users> user = getUserByEmail(email);
+            return user.filter(u->u.getStatus()== Status.active).isPresent();
+        }catch (NoResultException e) {
+           return false;
+        }
     }
 
     public List<Users> listAllUsers() {

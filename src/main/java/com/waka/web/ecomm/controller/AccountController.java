@@ -130,4 +130,34 @@ public class AccountController extends Controller {
         }
 
     }
+
+    public void verifyError(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getSession().getAttribute("user") == null) {
+            redirect("account", response);
+            return;
+        }
+
+        Optional<SiteSetting> settingsDao = new SettingsDao().getAppName();
+        if (settingsDao.isPresent()) {
+            SiteSetting appName = settingsDao.get();
+            request.setAttribute("appName", appName.getValue() + " - Verify Email");
+        }
+
+        view("errorPages/verify_email", request, response);
+    }
+
+    public void verifyAccount(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getSession().getAttribute("user") == null) {
+            redirect("account", response);
+            return;
+        }
+
+        Optional<SiteSetting> settingsDao = new SettingsDao().getAppName();
+        if (settingsDao.isPresent()) {
+            SiteSetting appName = settingsDao.get();
+            request.setAttribute("appName", appName.getValue() + " - Verify Account");
+        }
+
+        view("errorPages/verify_account", request, response);
+    }
 }

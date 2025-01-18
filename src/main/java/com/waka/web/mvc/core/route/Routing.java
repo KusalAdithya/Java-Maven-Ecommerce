@@ -1,5 +1,6 @@
 package com.waka.web.mvc.core.route;
 
+import com.waka.web.ecomm.dao.UsersDao;
 import com.waka.web.ecomm.entity.Users;
 import com.waka.web.mvc.core.controller.Controller;
 import com.waka.web.mvc.core.interfaces.Authenticate;
@@ -41,19 +42,29 @@ public class Routing {
             Class<? extends Controller> aClass = routeModel.getController().getClass();
             Method method = aClass.getDeclaredMethod(routeModel.getMethod(), HttpServletRequest.class, HttpServletResponse.class);
 
+//            Authenticate authenticate = method.getAnnotation(Authenticate.class);
             //Authentication
             if (aClass.isAnnotationPresent(Authenticate.class)) {
                 Authenticate authenticate = aClass.getAnnotation(Authenticate.class);
-
                 if (!validateAuthentication(request, authenticate.value())) {
                     response.sendRedirect("account");
                     return;
                 }
-            } else if (method.isAnnotationPresent(Authenticate.class)) {
-                Authenticate authenticate = method.getAnnotation(Authenticate.class);
 
+                boolean verifyAccount = verifyAccount(request, response);
+                if (!verifyAccount) {
+                    return;
+                }
+
+            } else if (method.isAnnotationPresent(Authenticate.class)) {
+                Authenticate authenticate = aClass.getAnnotation(Authenticate.class);
                 if (!validateAuthentication(request, authenticate.value())) {
                     response.sendRedirect("account");
+                    return;
+                }
+
+                boolean verifyAccount = verifyAccount(request, response);
+                if (!verifyAccount) {
                     return;
                 }
             }
@@ -89,5 +100,23 @@ public class Routing {
             }
         }
         return hasRole;
+    }
+
+    private boolean verifyAccount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        Users user =(Users) session.getAttribute("user");
+
+        UsersDao dao = new UsersDao();
+        if (!dao.checkEmailVerified(user.getEmail())){
+            response.sendRedirect("verify_email");
+            return false;
+        }
+
+        if (!dao.checkUserStatus(user.getEmail())){
+            response.sendRedirect("verify_account");
+            return false;
+        }
+
+        return true;
     }
 }
